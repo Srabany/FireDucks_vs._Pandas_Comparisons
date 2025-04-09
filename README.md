@@ -26,7 +26,6 @@ Simple, clean & realistic operations you’ll find in any data engineering or an
 ## 💻 How to Run?
 git clone https://github.com/Srabany/FireDucks_vs._Pandas_Data_Engineering_-_Large-Scale_Processing.git
 
-pip install -r requirements.txt
 → Open the notebook (FireDucks_vs._Pandas_Data_Engineering_-_Large-Scale_Processing
 .ipynb) in Google Colab / Jupyter and run all cells ⚡
 
