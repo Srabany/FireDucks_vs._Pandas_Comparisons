@@ -1,37 +1,54 @@
+# Load Libraries
 import pandas as pd
-import fireducks as fd
+import fireducks.pandas as fd
 import time
 
-# Load Dataset
-pdf = pd.read_csv('large_dataset.csv')
-fdf = fd.read_csv('large_dataset.csv')
+# File Path
+file_path = 'large_dataset.csv'
 
-### Multiple Operations Together ###
-# Filter -> GroupBy -> Sort -> Top 5
+# -----------------------------
+# 1. Read CSV
+start = time.time()
+pandas_df = pd.read_csv(file_path).head()
+print("Pandas Read Time:", time.time() - start)
 
-print("Pandas Execution:")
-start_time = time.time()
-result_pdf = (
-    pdf[pdf['amount'] > 50]  # Filter
-    .groupby('category')['amount']  # GroupBy
-    .sum()
-    .reset_index()
-    .sort_values('amount', ascending=False)  # Sort
-    .head(5)  # Top 5
-)
-print(result_pdf)
-print("Pandas Total Time:", time.time() - start_time)
+start = time.time()
+fd_df = fd.read_csv(file_path).head()
+print("FireDucks Read Time:", time.time() - start)
 
 
-print("\nFireDucks Execution:")
-start_time = time.time()
-result_fdf = (
-    fdf[fdf['amount'] > 50]  # Filter
-    .groupby('category')['amount']  # GroupBy
-    .sum()
-    .reset_index()
-    .sort('amount', descending=True)  # Sort
-    .head(5)  # Top 5
-)
-print(result_fdf)
-print("FireDucks Total Time:", time.time() - start_time)
+# -----------------------------
+# 2. Filter data → amount > 80
+start = time.time()
+filtered_pandas = pandas_df[pandas_df['amount'] > 80]
+print("Pandas Filter Time:", time.time() - start)
+
+start = time.time()
+filtered_fd = fd_df[fd_df['amount'] > 80]
+print("FireDucks Filter Time:", time.time() - start)
+
+
+# -----------------------------
+# 3. GroupBy category & sum amount
+start = time.time()
+result_pandas = filtered_pandas.groupby('category')['amount'].sum().reset_index()
+print("Pandas GroupBy Time:", time.time() - start)
+
+start = time.time()
+result_fd = filtered_fd.groupby('category')['amount'].sum().reset_index()
+print("FireDucks GroupBy Time:", time.time() - start)
+
+
+# -----------------------------
+# 4. Sort by amount descending
+start = time.time()
+sorted_pandas = result_pandas.sort_values(by='amount', ascending=False)
+print("Pandas Sort Time:", time.time() - start)
+
+start = time.time()
+sorted_fd = result_fd.sort_values(by='amount', ascending=False)
+print("FireDucks Sort Time:", time.time() - start)
+
+
+# -----------------------------
+print("Demo Completed Successfully!")
