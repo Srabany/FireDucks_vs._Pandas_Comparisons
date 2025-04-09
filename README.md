@@ -30,6 +30,9 @@ pip install -r requirements.txt
 → Open the notebook (FireDucks_vs._Pandas_Data_Engineering_-_Large-Scale_Processing
 .ipynb) in Google Colab / Jupyter and run all cells ⚡
 
+## Dataset Download 📥
+Download the dataset from here: [Download large_dataset.csv](https://drive.google.com/file/d/1IBiO9LpKTcJn9Vqvw2piwzQ4iPa90JS8/view?usp=sharing)
+
 ## 🎯 Purpose
 This project is a simple experiment to show:
 
