@@ -24,7 +24,7 @@ Simple, clean & realistic operations you’ll find in any data engineering or an
 * Matplotlib 📊
 
 ## 💻 How to Run?
-git clone https://github.com/Srabany/FireDucks_vs._Pandas_Data_Engineering_-_Large-Scale_Processing.git
+git clone (https://github.com/Srabany/FireDucks_vs._Pandas_Comparisons.git)
 
 → Open the notebook (FireDucks_vs._Pandas_Data_Engineering_-_Large-Scale_Processing
 .ipynb) in Google Colab / Jupyter and run all cells ⚡
